@@ -2,6 +2,7 @@
 
 namespace KoninklijkeCollective\MyUserManagement\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use DateTime;
 use KoninklijkeCollective\MyUserManagement\Domain\DataTransferObject\BackendUserGroupPermission;
 use KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUser;
@@ -40,7 +41,7 @@ final class BackendUserRepository extends \TYPO3\CMS\Beuser\Domain\Repository\Ba
         return $result;
     }
 
-    public function findAllActive(): array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+    public function findAllActive(): array|QueryResultInterface
     {
         $query = $this->createQuery();
         $query->matching($query->logicalAnd(
@@ -53,7 +54,7 @@ final class BackendUserRepository extends \TYPO3\CMS\Beuser\Domain\Repository\Ba
         return $query->execute();
     }
 
-    public function findAllInactive(DateTime $lastLoginSince): array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+    public function findAllInactive(DateTime $lastLoginSince): array|QueryResultInterface
     {
         $query = $this->createQuery();
         $query->matching($query->logicalAnd(

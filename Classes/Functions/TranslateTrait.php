@@ -20,7 +20,7 @@ trait TranslateTrait
         $translation = LocalizationUtility::translate(
             'LLL:EXT:my_user_management/Resources/Private/Language/locallang_be.xlf'
             . ':' . $key,
-            'my_user_management',
+            'MyUserManagement',
             $arguments
         );
 

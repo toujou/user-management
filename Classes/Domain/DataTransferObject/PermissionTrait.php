@@ -2,6 +2,7 @@
 
 namespace KoninklijkeCollective\MyUserManagement\Domain\DataTransferObject;
 
+use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Context\Context;
 use TYPO3\CMS\Core\Context\Exception\AspectNotFoundException;
 use TYPO3\CMS\Core\Utility\Exception\NotImplementedMethodException;
@@ -57,7 +58,7 @@ trait PermissionTrait
                 return [];
             }
 
-            /** @var \TYPO3\CMS\Core\Authentication\BackendUserAuthentication|null $backendUser */
+            /** @var BackendUserAuthentication|null $backendUser */
             $backendUser = $GLOBALS['BE_USER'];
             if (!$backendUser) {
                 return [];

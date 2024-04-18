@@ -44,7 +44,7 @@ final class BackendUserControllerService implements SingletonInterface
             $this->addFlashMessage(
                 self::translate('backend_user_no_rights_to_table_description', [BackendUser::TABLE]),
                 self::translate('backend_user_no_rights_to_table_title'),
-                \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR,
+                ContextualFeedbackSeverity::ERROR,
             );
         }
     }
@@ -59,7 +59,7 @@ final class BackendUserControllerService implements SingletonInterface
             $this->addFlashMessage(
                 self::translate('filter_on_admin_is_not_allowed_description'),
                 self::translate('filter_on_admin_is_not_allowed_title'),
-                \TYPO3\CMS\Core\Type\ContextualFeedbackSeverity::ERROR,
+                ContextualFeedbackSeverity::ERROR,
             );
         }
 

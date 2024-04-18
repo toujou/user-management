@@ -2,6 +2,8 @@
 
 namespace KoninklijkeCollective\MyUserManagement\Controller;
 
+use TYPO3\CMS\Beuser\Controller\BackendUserController;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUser;
 use KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUserGroup;
 use KoninklijkeCollective\MyUserManagement\Domain\Repository\BackendUserGroupRepository as CustomBackendUserGroupRepository;
@@ -28,7 +30,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  *
  * @see \TYPO3\CMS\Beuser\Controller\BackendUserController
  */
-final class OgBackendUserController extends \TYPO3\CMS\Beuser\Controller\BackendUserController
+final class OgBackendUserController extends BackendUserController
 {
     use TranslateTrait;
 
@@ -60,7 +62,7 @@ final class OgBackendUserController extends \TYPO3\CMS\Beuser\Controller\Backend
             $this->addFlashMessage(
                 self::translate('backend_user_no_rights_to_table_description', [BackendUser::TABLE]),
                 self::translate('backend_user_no_rights_to_table_title'),
-                AbstractMessage::ERROR
+                ContextualFeedbackSeverity::ERROR
             );
         }
         $backendUser = $this->getBackendUser();
@@ -78,7 +80,7 @@ final class OgBackendUserController extends \TYPO3\CMS\Beuser\Controller\Backend
                     $this->addFlashMessage(
                         self::translate('filter_on_admin_is_not_allowed_description'),
                         self::translate('filter_on_admin_is_not_allowed_title'),
-                        AbstractMessage::ERROR
+                        ContextualFeedbackSeverity::ERROR
                     );
                 }
                 $demand->setUserType(Demand::USERTYPE_USERONLY);
@@ -142,7 +144,7 @@ final class OgBackendUserController extends \TYPO3\CMS\Beuser\Controller\Backend
             $this->addFlashMessage(
                 self::translate('backend_user_no_rights_to_table_description', [BackendUserGroup::TABLE]),
                 self::translate('backend_user_no_rights_to_table_title'),
-                AbstractMessage::ERROR
+                ContextualFeedbackSeverity::ERROR
             );
         }
 

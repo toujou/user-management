@@ -7,7 +7,6 @@ $EM_CONF['my_user_management'] = [
     'version' => '8.0.0-dev',
     'state' => 'stable',
     'uploadFolder' => false,
-    'clearCacheOnLoad' => true,
     'author' => 'Benjamin Serfhos',
     'author_email' => 'benjamin@serfhos.com',
     'author_company' => 'Rotterdam School of Management, Erasmus University',

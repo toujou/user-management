@@ -2,6 +2,7 @@
 
 namespace KoninklijkeCollective\MyUserManagement\Domain\Model;
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use KoninklijkeCollective\MyUserManagement\Service\OnlineSessionService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -23,7 +24,7 @@ final class BackendUser extends \TYPO3\CMS\Beuser\Domain\Model\BackendUser
     /**
      * Override default backend user groups to map own custom model
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUserGroup>
+     * @var ObjectStorage<BackendUserGroup>
      */
     protected $backendUserGroups;
 
@@ -50,7 +51,7 @@ final class BackendUser extends \TYPO3\CMS\Beuser\Domain\Model\BackendUser
             $mounts = $this->getDatabaseMountPoints();
 
             foreach ($this->getBackendUserGroups() as $group) {
-                /** @var \KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUserGroup $group */
+                /** @var BackendUserGroup $group */
                 $mounts = $this->getAllDatabaseMountsFromUserGroup($group, $mounts);
             }
             $this->setInheritedMountPoints($mounts);
@@ -60,7 +61,7 @@ final class BackendUser extends \TYPO3\CMS\Beuser\Domain\Model\BackendUser
     }
 
     /**
-     * @param  \KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUserGroup  $group
+     * @param BackendUserGroup $group
      * @param  array  $mounts
      * @return array
      */
@@ -71,7 +72,7 @@ final class BackendUser extends \TYPO3\CMS\Beuser\Domain\Model\BackendUser
 
         if ($group->getSubGroups() !== null) {
             foreach ($group->getSubGroups() as $subGroup) {
-                /** @var \KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUserGroup $subGroup */
+                /** @var BackendUserGroup $subGroup */
                 $mounts = $this->getAllDatabaseMountsFromUserGroup($subGroup, $mounts);
             }
         }

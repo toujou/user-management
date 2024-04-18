@@ -2,6 +2,7 @@
 
 namespace KoninklijkeCollective\MyUserManagement\Controller;
 
+use TYPO3\CMS\Beuser\Domain\Model\BackendUser;
 use KoninklijkeCollective\MyUserManagement\Domain\Repository\BackendUserGroupRepository;
 use KoninklijkeCollective\MyUserManagement\Domain\Repository\BackendUserRepository;
 use KoninklijkeCollective\MyUserManagement\Domain\Repository\FileMountRepository;
@@ -298,7 +299,7 @@ final class BackendUserController extends ActionController
     public function initiatePasswordResetAction(int $user): ResponseInterface
     {
         $context = GeneralUtility::makeInstance(Context::class);
-        /** @var \TYPO3\CMS\Beuser\Domain\Model\BackendUser $user */
+        /** @var BackendUser $user */
         $user = $this->backendUserRepository->findByUid($user);
         if (!$user || !$user->isPasswordResetEnabled() || !$context->getAspect('backend.user')->isAdmin()) {
             // Add an error message

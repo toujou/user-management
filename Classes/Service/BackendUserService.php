@@ -24,7 +24,7 @@ final class BackendUserService implements SingletonInterface
      * Find users which has access to given page id
      * Checks db mounts
      *
-     * @return \KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUser[]
+     * @return BackendUser[]
      */
     public function findUsersWithPageAccess(int $pageId): array
     {
@@ -40,7 +40,7 @@ final class BackendUserService implements SingletonInterface
     /**
      * Find all known backend users
      *
-     * @return \KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUser[]
+     * @return BackendUser[]
      */
     public function findAllBackendUsers(): array
     {

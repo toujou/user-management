@@ -2,8 +2,12 @@
 
 declare(strict_types=1);
 
+use KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUser;
+use KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUserGroup;
+use KoninklijkeCollective\MyUserManagement\Domain\Model\FileMount;
+
 return [
-    \KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUser::class => [
+    BackendUser::class => [
         'tableName' => 'be_users',
         'properties' => [
             'allowedLanguages' => [
@@ -23,7 +27,7 @@ return [
             ],
         ],
     ],
-    \KoninklijkeCollective\MyUserManagement\Domain\Model\BackendUserGroup::class => [
+    BackendUserGroup::class => [
         'tableName' => 'be_groups',
         'properties' => [
             'subGroups' => [
@@ -37,7 +41,7 @@ return [
             ],
         ],
     ],
-    \KoninklijkeCollective\MyUserManagement\Domain\Model\FileMount::class => [
+    FileMount::class => [
         'tableName' => 'sys_filemounts',
     ],
 ];
