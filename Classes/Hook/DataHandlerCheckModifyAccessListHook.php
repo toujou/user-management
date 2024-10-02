@@ -21,6 +21,16 @@ final class DataHandlerCheckModifyAccessListHook implements DataHandlerCheckModi
      */
     public function checkModifyAccessList(&$accessAllowed, $table, DataHandler $parent): void
     {
+        $datamap = $parent->datamap['be_users'] ?? null;
+        if ($datamap) {
+            $userData = reset($datamap);
+            if ($accessAllowed && $table === 'be_users'
+                && str_contains($userData['uid'] ?? '', 'NEW')
+                && $userData['tx_toujou_keycloak_id'] !== '') {
+                return;
+            }
+        }
+
         // if already false processed, don't do anything.
         if (!$accessAllowed) {
             return;
